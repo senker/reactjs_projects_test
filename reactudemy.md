@@ -126,3 +126,52 @@ Later in the course, we'll see Http requests that complete (where we then want t
 
 Redux learning - 34, 37, 38, 39, 42, 43, 45 (russian language)
 Playlist reference - https://www.youtube.com/watch?v=gb7gMluAeao&list=PLcvhF2Wqh7DNVy1OCUpG3i5lyxyBWhGZ8
+
+Quiz 2:
+
+1. Question 1:
+How should you NOT listen to events when working with React?
+Answer: Adding an event listener (e.g. "addEventListener") manually.
+
+2. Question 2:
+Which value should you pass to event listener props like onClick?
+Answer: A pointer at the function that should execute when the event occurs.
+
+3. Question 3:
+How can you communicate from one of your components to a parent (i.e. higher level) component?
+Answer: You can accept a function via props and call it from inside the lower-level (child) component to then trigger some action in the parent component (which passed the function).
+That's the correct choice. In JavaScript, functions are just objects (i.e. regular values) and hence you can pass them as values via props to a component. If that component then calls that function, it executes - and that's how you can trigger a function defined in a parent component from inside a child component.
+
+4. Question 4:
+How can you change what a component displays on the screen?
+Answer: Create some "state" value (via useState) which you can then change and output in JSX.
+
+5. Question 5:
+Why do you need this extra "state" concept instead of regular JS variables which you change and use?
+Answer: Because standard JS variables don't cause React components to be re-evaluated.
+That's correct! React doesn't care whether you changed some variable values. It'll not re-evaluate the component function. It only does that for changes to registered state values (created via useState)
+
+6. Question 6:
+Which statement about useState is NOT correct?
+Answer: Calling useState again will update the state value.
+That's the correct choice because this statement is wrong. Calling useState again will simply create a new state.
+
+7. Question 7:
+How can you update component state (created via useState)?
+Answer: You can call the state updating function which useState also returned.
+That's correct! useState returns an array with exactly two elements - the second element is always a function which you can call to set a new value for your state. Calling that function will then also trigger React to re-evaluate the component.
+
+8. Question 8:
+How much state may you manage in one single component?
+Answer: You can have as many state slices as you need / want.
+
+9. Question 9:
+What's wrong about this code snippet?
+
+
+
+const [counter, setCounter] = useState(1);
+...
+setCounter(counter + 1);
+
+Answer: If you upload state that depends on the previous state, you should use the "function form" of the state updating function instead.
