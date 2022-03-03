@@ -12,7 +12,7 @@ const App = (props) => {
   return (
     <div className="app-wrapper">
       <Header />
-      <Navbar />
+      <Navbar nameState={props.state.sidebarPage} />
       <div className="app-wrapper-content">
         <Routes>
           <Route

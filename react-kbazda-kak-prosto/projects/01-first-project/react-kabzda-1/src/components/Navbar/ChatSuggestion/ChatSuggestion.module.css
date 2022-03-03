@@ -1,0 +1,10 @@
+.chatSuggestion {
+  margin-top: 25px;
+  font-size: 25px;
+}
+
+.friendStyling {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

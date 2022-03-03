@@ -1,0 +1,13 @@
+.item {
+  color: gold;
+  width: 70px;
+  margin-top: 15px;
+  margin-right: 5px;
+  font-size: 19px;
+}
+
+.item img {
+  width: 65px;
+  height: 65px;
+  border-radius: 30px;
+}
