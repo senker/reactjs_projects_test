@@ -16,5 +16,6 @@
 .messages {
   padding: 10px;
 }
-.message {
+.messages .message {
+  color: white;
 }
