@@ -19,3 +19,26 @@
 .messages .message {
   color: white;
 }
+
+.textAreaZone {
+  display: flex;
+  margin-top: 15px;
+}
+
+.textArea {
+  height: 24px;
+  font-size: 16px;
+  margin-right: 16px;
+  width: 250px;
+}
+
+.textAreaButton {
+  align-self: center;
+  cursor: pointer;
+  font-size: 0;
+}
+
+.textAreaButton > img {
+  height: 24px;
+  width: 24px;
+}

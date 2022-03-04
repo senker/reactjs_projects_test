@@ -3,6 +3,8 @@ import s from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
+import icon from "../../assets/icons/sendMessage.png";
+
 /* const SelectedLink = () => {
   return (navData) => (navData.isActive ? s.active : s.dialogsItem);
 }; */
@@ -15,10 +17,28 @@ const Dialogs = (props) => {
     <Message message={m.message} />
   ));
 
+  let newMessageElement = React.createRef();
+
+  let onAddMessage = () => {
+    let text = newMessageElement.current.value;
+    alert(text);
+  };
   return (
     <div className={s.dialogs}>
       <div className={s.dialogsItems}>{dialogsElements}</div>
-      <div className={s.messages}>{messagesElements}</div>
+      <div className={s.messages}>
+        {messagesElements}
+        <div className={s.textAreaZone}>
+          <textarea ref={newMessageElement} className={s.textArea}></textarea>
+          <button
+            className={s.textAreaButton}
+            title="Submit"
+            onClick={onAddMessage}
+          >
+            <img src={icon} alt="paper plane icon" />
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
