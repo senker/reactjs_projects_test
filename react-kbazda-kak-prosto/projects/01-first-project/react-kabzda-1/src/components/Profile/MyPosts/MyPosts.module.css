@@ -6,6 +6,7 @@
 }
 
 .buttonStyling {
-  background-color:aquamarine;
+  background-color: aquamarine;
   margin-right: 5px;
+  cursor: pointer;
 }

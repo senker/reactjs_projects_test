@@ -11,7 +11,7 @@ const MyPosts = (props) => {
 
   let onAddPost = () => {
     let text = newPostElement.current.value;
-    alert(text);
+    props.addPost(text);
   };
 
   return (
@@ -21,7 +21,9 @@ const MyPosts = (props) => {
         <div>
           <textarea ref={newPostElement}></textarea>
         </div>
-        <button className={s.buttonStyling} onClick={onAddPost}>Add post</button>
+        <button className={s.buttonStyling} onClick={onAddPost}>
+          Add post
+        </button>
         <button className={s.buttonStyling}>Remove</button>
       </div>
       <div className={s.posts}>{postsElements}</div>
