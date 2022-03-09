@@ -14,6 +14,7 @@ let state = {
         likesCount: 25,
       },
     ],
+    newPostText: "it-kamasutra.com",
   },
   messagesPage: {
     dialogs: [
@@ -32,6 +33,7 @@ let state = {
       { id: 5, message: "Bye" },
       { id: 6, message: "Bye bye" },
     ],
+    newMessageText: "Dobriy deni",
   },
   sidebarPage: {
     name: [
@@ -42,13 +44,36 @@ let state = {
   },
 };
 
-export let addPost = (postMessage) => {
+window.state = state;
+
+export let addPost = () => {
   let newPost = {
     id: 5,
-    message: postMessage,
+    message: state.profilePage.newPostText,
     likesCount: 0,
   };
   state.profilePage.posts.push(newPost);
+  state.profilePage.newPostText = "";
+  rerenderEntireTree(state);
+};
+
+export let updateNewPostText = (newText) => {
+  state.profilePage.newPostText = newText;
+  rerenderEntireTree(state);
+};
+
+export let addMessage = () => {
+  let newMessage = {
+    id: 7,
+    message: state.messagesPage.newMessageText,
+  };
+  state.messagesPage.messages.push(newMessage);
+  state.messagesPage.newMessageText = "";
+  rerenderEntireTree(state);
+};
+
+export let updateNewMessageText = (newMessage) => {
+  state.messagesPage.newMessageText = newMessage;
   rerenderEntireTree(state);
 };
 

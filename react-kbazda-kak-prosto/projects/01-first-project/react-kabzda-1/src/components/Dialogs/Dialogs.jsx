@@ -20,16 +20,26 @@ const Dialogs = (props) => {
   let newMessageElement = React.createRef();
 
   let onAddMessage = () => {
-    let text = newMessageElement.current.value;
-    alert(text);
+    props.addMessage();
   };
+
+  let onMessageChange = () => {
+    let text = newMessageElement.current.value;
+    props.updateNewMessageText(text);
+  };
+
   return (
     <div className={s.dialogs}>
       <div className={s.dialogsItems}>{dialogsElements}</div>
       <div className={s.messages}>
         {messagesElements}
         <div className={s.textAreaZone}>
-          <textarea ref={newMessageElement} className={s.textArea}></textarea>
+          <textarea
+            onChange={onMessageChange}
+            ref={newMessageElement}
+            className={s.textArea}
+            value={props.msgState.newMessageText}
+          ></textarea>
           <button
             className={s.textAreaButton}
             title="Submit"
@@ -45,14 +55,12 @@ const Dialogs = (props) => {
 
 export default Dialogs;
 
-{
-  /* Old way of doing this, hard coded 
+
+/*   Old way of doing this, hard coded 
         <DialogItem name={dialogsData[0].name} id={dialogsData[0].id} />
         <DialogItem name={dialogsData[1].name} id={dialogsData[1].id} /> */
-}
 
-{
   /* Old way of doing t his, hard coded way
         <Message message={messagesData[0].message} />
         <Message message={messagesData[1].message} /> */
-}
+
