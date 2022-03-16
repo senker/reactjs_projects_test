@@ -2,8 +2,8 @@ import React from "react";
 import s from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-
 import icon from "../../assets/icons/sendMessage.png";
+import { onAddMessageActionCreator, onMessageChangeActionCreator } from "../../redux/state";
 
 /* const SelectedLink = () => {
   return (navData) => (navData.isActive ? s.active : s.dialogsItem);
@@ -20,12 +20,12 @@ const Dialogs = (props) => {
   let newMessageElement = React.createRef();
 
   let onAddMessage = () => {
-    props.dispatch({ type: "ADD-MESSAGE" });
+    props.dispatch(onAddMessageActionCreator());
   };
 
   let onMessageChange = () => {
     let text = newMessageElement.current.value;
-    const action = { type: "UPDATE-NEW-MESSAGE-TEXT", newMessage: text };
+    const action = onMessageChangeActionCreator(text);
     props.dispatch(action);
   };
 
