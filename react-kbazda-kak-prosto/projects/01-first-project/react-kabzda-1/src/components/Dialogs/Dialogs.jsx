@@ -20,12 +20,13 @@ const Dialogs = (props) => {
   let newMessageElement = React.createRef();
 
   let onAddMessage = () => {
-    props.addMessage();
+    props.dispatch({ type: "ADD-MESSAGE" });
   };
 
   let onMessageChange = () => {
     let text = newMessageElement.current.value;
-    props.updateNewMessageText(text);
+    const action = { type: "UPDATE-NEW-MESSAGE-TEXT", newMessage: text };
+    props.dispatch(action);
   };
 
   return (
@@ -55,12 +56,10 @@ const Dialogs = (props) => {
 
 export default Dialogs;
 
-
 /*   Old way of doing this, hard coded 
         <DialogItem name={dialogsData[0].name} id={dialogsData[0].id} />
         <DialogItem name={dialogsData[1].name} id={dialogsData[1].id} /> */
 
-  /* Old way of doing t his, hard coded way
+/* Old way of doing t his, hard coded way
         <Message message={messagesData[0].message} />
         <Message message={messagesData[1].message} /> */
-
