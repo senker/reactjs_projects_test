@@ -18,7 +18,7 @@ let store = {
           likesCount: 25,
         },
       ],
-      newPostText: "it-kamasutra.com",
+      newPostText: "",
     },
     messagesPage: {
       dialogs: [
@@ -37,7 +37,7 @@ let store = {
         { id: 5, message: "Bye" },
         { id: 6, message: "Bye bye" },
       ],
-      newMessageText: "Dobriy deni",
+      newMessageText: "",
     },
     sidebarPage: {
       name: [
@@ -84,13 +84,13 @@ let store = {
   },
 };
 
-export const addPostActionCreator = () => ({ type: ADD_POST });
-export const onPostChangeActionCreator = (text) => ({
+export const addPostCreator = () => ({ type: ADD_POST });
+export const onPostChangeCreator = (text) => ({
   type: UPDATE_NEW_POST_TEXT,
   newText: text,
 });
-export const onAddMessageActionCreator = () => ({ type: ADD_MESSAGE });
-export const onMessageChangeActionCreator = (text) => ({
+export const addMessageCreator = () => ({ type: ADD_MESSAGE });
+export const onMessageChangeCreator = (text) => ({
   type: UPDATE_NEW_MESSAGE_TEXT,
   newMessage: text,
 });

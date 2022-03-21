@@ -3,30 +3,31 @@ import s from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import icon from "../../assets/icons/sendMessage.png";
-import { onAddMessageActionCreator, onMessageChangeActionCreator } from "../../redux/state";
+import { addMessageCreator, onMessageChangeCreator } from "../../redux/state";
 
 /* const SelectedLink = () => {
   return (navData) => (navData.isActive ? s.active : s.dialogsItem);
 }; */
 
 const Dialogs = (props) => {
-  let dialogsElements = props.msgState.dialogs.map((d) => (
+  let state = props.store.getState().messagesPage;
+
+  let dialogsElements = state.dialogs.map((d) => (
     <DialogItem name={d.name} id={d.id} />
   ));
-  let messagesElements = props.msgState.messages.map((m) => (
+  let messagesElements = state.messages.map((m) => (
     <Message message={m.message} />
   ));
-
-  let newMessageElement = React.createRef();
+  let newMessageBody = state.newMessageText;
 
   let onAddMessage = () => {
-    props.dispatch(onAddMessageActionCreator());
+    props.store.dispatch(addMessageCreator());
   };
 
-  let onMessageChange = () => {
-    let text = newMessageElement.current.value;
-    const action = onMessageChangeActionCreator(text);
-    props.dispatch(action);
+  let onMessageChange = (e) => {
+    let text = e.target.value;
+    const action = onMessageChangeCreator(text);
+    props.store.dispatch(action);
   };
 
   return (
@@ -37,9 +38,9 @@ const Dialogs = (props) => {
         <div className={s.textAreaZone}>
           <textarea
             onChange={onMessageChange}
-            ref={newMessageElement}
             className={s.textArea}
-            value={props.msgState.newMessageText}
+            value={newMessageBody}
+            placeholder="Enter your message"
           ></textarea>
           <button
             className={s.textAreaButton}
