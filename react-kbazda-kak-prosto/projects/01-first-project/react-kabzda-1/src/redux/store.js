@@ -46,15 +46,19 @@ let store = {
       ],
     },
   },
+
   _callSubscriber() {
     console.log("state is changed");
   },
+
   getState() {
     return this._state;
   },
+
   subscribe(observer) {
     this._callSubscriber = observer;
   },
+  
   dispatch(action) {
     this._state.profilePage = profileReducer(this._state.profilePage, action);
     this._state.messagesPage = dialogsReducer(this._state.messagesPage, action);
