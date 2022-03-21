@@ -3,7 +3,10 @@ import s from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import icon from "../../assets/icons/sendMessage.png";
-import { addMessageCreator, onMessageChangeCreator } from "../../redux/state";
+import {
+  addMessageCreator,
+  onMessageChangeCreator,
+} from "../../redux/reducers/dialogsReducer";
 
 /* const SelectedLink = () => {
   return (navData) => (navData.isActive ? s.active : s.dialogsItem);
