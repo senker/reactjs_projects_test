@@ -3,34 +3,26 @@ import s from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import icon from "../../assets/icons/sendMessage.png";
-import {
-  addMessageCreator,
-  onMessageChangeCreator,
-} from "../../redux/reducers/dialogsReducer";
 
 /* const SelectedLink = () => {
   return (navData) => (navData.isActive ? s.active : s.dialogsItem);
 }; */
 
 const Dialogs = (props) => {
-  let state = props.store.getState().messagesPage;
-
-  let dialogsElements = state.dialogs.map((d) => (
+  let dialogsElements = props.dialogs.map((d) => (
     <DialogItem name={d.name} id={d.id} />
   ));
-  let messagesElements = state.messages.map((m) => (
+  let messagesElements = props.messages.map((m) => (
     <Message message={m.message} />
   ));
-  let newMessageBody = state.newMessageText;
 
   let onAddMessage = () => {
-    props.store.dispatch(addMessageCreator());
+    props.addMessage();
   };
 
   let onMessageChange = (e) => {
     let text = e.target.value;
-    const action = onMessageChangeCreator(text);
-    props.store.dispatch(action);
+    props.updateNewMessageText(text);
   };
 
   return (
@@ -42,7 +34,7 @@ const Dialogs = (props) => {
           <textarea
             onChange={onMessageChange}
             className={s.textArea}
-            value={newMessageBody}
+            value={props.newMessageText}
             placeholder="Enter your message"
           ></textarea>
           <button
