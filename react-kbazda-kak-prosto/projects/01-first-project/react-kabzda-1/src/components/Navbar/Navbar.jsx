@@ -1,5 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import store from "../../redux/redux-store";
+import StoreContext from "../../StoreContext";
 import ChatSuggestion from "./ChatSuggestion/ChatSuggestion";
 import s from "./Navbar.module.css";
 
@@ -7,7 +9,7 @@ const SelectedLink = () => {
   return (navData) => (navData.isActive ? s.active : s.item);
 };
 
-const Navbar = (props) => {
+const Navbar = () => {
   return (
     <div className={s.nav}>
       <nav>
@@ -38,10 +40,11 @@ const Navbar = (props) => {
         </div>
       </nav>
       <div>
-        <ChatSuggestion name={props.nameState.name} />
+        <StoreContext.Consumer>
+          {(store) => <ChatSuggestion name={store.getState().sidebarPage.name} />}
+        </StoreContext.Consumer>
       </div>
     </div>
   );
 };
-
 export default Navbar;
