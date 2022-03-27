@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import store from "../../redux/redux-store";
-import StoreContext from "../../StoreContext";
 import ChatSuggestion from "./ChatSuggestion/ChatSuggestion";
 import s from "./Navbar.module.css";
 
@@ -40,9 +39,7 @@ const Navbar = () => {
         </div>
       </nav>
       <div>
-        <StoreContext.Consumer>
-          {(store) => <ChatSuggestion name={store.getState().sidebarPage.name} />}
-        </StoreContext.Consumer>
+        <ChatSuggestion name={store.getState().sidebarPage.name} />
       </div>
     </div>
   );
